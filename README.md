@@ -4,7 +4,7 @@
 
 Arduino library to calibrate and improve ADC measurements with the Raspberry Pi Pico. Can compensate ADC offsets, take arbitrary average measurements and temporarily disables the power-saving mode when analog-reading to improve the power supply ripple and noise.
 
-This library is also available in the Arduino IDE, see [Arduino Library List](https://www.arduinolibraries.info/libraries/PicoAnalogCorrection).
+This library is also available in the Arduino IDE, see [Arduino Library List](https://www.arduinolibraries.info/libraries/pico-analog-correction).
 
 ## Using
 
