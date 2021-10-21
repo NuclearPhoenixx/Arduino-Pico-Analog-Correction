@@ -11,14 +11,16 @@
 
 #define PS_PIN 23 // Power Save Pin, H to disable, L default
 
+
 class PicoAnalogCorrection {
 	private:
-		int _offset;
+		int _gnd_offset, _vcc_offset;
 		
 	public:
-		PicoAnalogCorrection(int offset=0);
+		PicoAnalogCorrection(int gnd_val=0, int vcc_val=0);
 		
-		int getOffset(uint8_t pin, size_t avg_size=100);
+		void calibrateAdc(uint8_t gnd_pin, uint8_t vcc_pin, size_t avg_size=100);
+		void returnCalibrationValues();
 		
 		int analogRead(uint8_t pin);
 		int analogCRead(uint8_t pin, size_t avg_size=1);

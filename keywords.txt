@@ -12,7 +12,8 @@ PicoAnalogCorrection	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #####################################
 
-getOffset	KEYWORD2
+calibrateAdc	KEYWORD2
+returnCalibrationValues	KEYWORD2
 analogRead	KEYWORD2
 analogCRead	KEYWORD2
 
