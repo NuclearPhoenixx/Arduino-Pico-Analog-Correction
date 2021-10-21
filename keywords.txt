@@ -6,9 +6,15 @@
 # Datatypes (KEYWORD1)
 #####################################
 
+PicoAnalogCorrection	KEYWORD1
+
 #####################################
 # Methods and Functions (KEYWORD2)
 #####################################
+
+getOffset	KEYWORD2
+analogRead	KEYWORD2
+analogCRead	KEYWORD2
 
 #####################################
 # Constants (LITERAL1)
