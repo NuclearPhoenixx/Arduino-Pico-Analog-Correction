@@ -15,6 +15,9 @@
 class PicoAnalogCorrection {
 	private:
 		int _gnd_offset, _vcc_offset;
+		float _a, _d;
+		
+		void setCorrectionValues();
 		
 	public:
 		PicoAnalogCorrection(int gnd_val=0, int vcc_val=0);

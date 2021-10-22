@@ -9,6 +9,18 @@
 PicoAnalogCorrection::PicoAnalogCorrection(int gnd_val, int vcc_val) {
 	_gnd_offset = gnd_val;
 	_vcc_offset = vcc_val;
+	setCorrectionValues();
+}
+
+
+void PicoAnalogCorrection::setCorrectionValues() {
+	if(_vcc_offset == 0) {
+		_a = 1.0;
+	} else {
+		_a = 4095.0 / (_vcc_offset - _gnd_offset);
+	}
+	_d = - _a * _gnd_offset;
+	return;
 }
 
 
@@ -27,6 +39,7 @@ void PicoAnalogCorrection::calibrateAdc(uint8_t gnd_pin, uint8_t vcc_pin, size_t
 	}
 	_vcc_offset = vcc_value/avg_size;
 	
+	setCorrectionValues();
 	return;
 }
 
@@ -53,7 +66,8 @@ int PicoAnalogCorrection::analogCRead(uint8_t pin, size_t avg_size) {
 	float value = .0;
 	
 	for(size_t i = 0; i < avg_size; i++) {
-		value += float( map(analogRead(pin), _gnd_offset, _vcc_offset, 0, 4095) );
+		//value += float( map(analogRead(pin), _gnd_offset, _vcc_offset, 0, 4095) );
+		value += float( _a * analogRead(pin) + _d );
 	}
 	
 	return round(value/avg_size);
