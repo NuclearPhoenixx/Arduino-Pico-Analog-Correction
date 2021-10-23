@@ -32,3 +32,5 @@ This library is limited to a very simple linear calibration since there are prac
 In addition, as the very helpful [Raspberry Pi Pico datasheet](https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf) suggests, the on-board power supply noise and accuracy are not the best. To get the best results possible, you need to use an external voltage reference. This, however, introduces additonal drawbacks.
 
 (Temporarily) Disabling the power-saving mode of the regulator is therefore a must-have to significantly reduce ripple on the ADC supply and is exactly what this library does independently from the calibration.
+
+More info about the Pico's ADC can be found [on this website](https://pico-adc.markomo.me/) by [@ferret-guy](https://github.com/ferret-guy), who did extensive testing to find out the exact specifications.
