@@ -25,7 +25,7 @@ int analogCRead(size_t pin, size_t avg_size=1);
 
 Both of these temporarily disable the power-saving mode to improve noise. Only the second function allows taking an arbitrary number of measurements and returning the arithmetic mean while also using the linear calibration.
 
-## Limitation
+## Limitations
 
 This library is limited to a very simple linear calibration since there are practically only two trusted voltages available to be measured: GND (0V) and VCC (3.3V). This means that the calibration will ensure that the ADC measures GND as 0 and VCC as 4095 with any value in between beeing distributed linearly within these two.
 
