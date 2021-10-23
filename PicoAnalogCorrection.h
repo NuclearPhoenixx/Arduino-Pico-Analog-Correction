@@ -22,10 +22,10 @@ class PicoAnalogCorrection {
 	public:
 		PicoAnalogCorrection(int gnd_val=0, int vcc_val=0);
 		
-		void calibrateAdc(uint8_t gnd_pin, uint8_t vcc_pin, size_t avg_size=100);
+		void calibrateAdc(size_t gnd_pin, size_t vcc_pin, size_t avg_size=100);
 		void returnCalibrationValues();
 		
-		int analogRead(uint8_t pin);
-		int analogCRead(uint8_t pin, size_t avg_size=1);
+		int analogRead(size_t pin);
+		int analogCRead(size_t pin, size_t avg_size=1);
 };
 #endif

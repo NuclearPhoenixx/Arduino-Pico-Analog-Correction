@@ -24,7 +24,7 @@ void PicoAnalogCorrection::setCorrectionValues() {
 }
 
 
-void PicoAnalogCorrection::calibrateAdc(uint8_t gnd_pin, uint8_t vcc_pin, size_t avg_size) {
+void PicoAnalogCorrection::calibrateAdc(size_t gnd_pin, size_t vcc_pin, size_t avg_size) {
 	float gnd_value = .0;
 	
 	for(size_t i = 0; i < avg_size; i++) {
@@ -50,7 +50,7 @@ void PicoAnalogCorrection::returnCalibrationValues() {
 }
 
 
-int PicoAnalogCorrection::analogRead(uint8_t pin) {
+int PicoAnalogCorrection::analogRead(size_t pin) {
 	digitalWrite(PS_PIN, HIGH); // Disable power-saving
 	delayMicroseconds(2); // Cooldown, maybe useless?
 	
@@ -62,7 +62,7 @@ int PicoAnalogCorrection::analogRead(uint8_t pin) {
 }
 
 
-int PicoAnalogCorrection::analogCRead(uint8_t pin, size_t avg_size) {
+int PicoAnalogCorrection::analogCRead(size_t pin, size_t avg_size) {
 	float value = .0;
 	
 	for(size_t i = 0; i < avg_size; i++) {
