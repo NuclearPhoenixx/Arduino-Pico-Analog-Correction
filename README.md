@@ -1,6 +1,6 @@
 # Arduino-Pico-Analog-Correction
 
-![latest version](https://img.shields.io/github/release/Phoenix1747/Arduino-Pico-Analog-Correction.svg?style=for-the-badge) ![issues](https://img.shields.io/github/issues/Phoenix1747/Arduino-Pico-Analog-Correction.svg?style=for-the-badge) ![open pr](https://img.shields.io/github/issues-pr-raw/phoenix1747/Arduino-Pico-Analog-Correction.svg?style=for-the-badge)
+![arduino-library-badge](https://www.ardu-badge.com/badge/PicoAnalogCorrection.svg?) ![latest version](https://img.shields.io/github/release/Phoenix1747/Arduino-Pico-Analog-Correction.svg?) ![issues](https://img.shields.io/github/issues/Phoenix1747/Arduino-Pico-Analog-Correction.svg?) ![open pr](https://img.shields.io/github/issues-pr-raw/phoenix1747/Arduino-Pico-Analog-Correction.svg?)
 
 Arduino library to calibrate and improve ADC measurements with the Raspberry Pi Pico. Can compensate ADC offsets, calculate the arithmetic mean of any number of measurements and temporarily disable the power-saving mode when analog-reading to improve the power supply ripple and noise.
 
