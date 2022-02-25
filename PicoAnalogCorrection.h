@@ -14,17 +14,17 @@
 
 class PicoAnalogCorrection {
 	private:
-		int _gnd_offset, _vcc_offset;
+		int _max_channel, _gnd_offset, _vcc_offset;
 		float _a, _d;
-		
+
 		void setCorrectionValues();
-		
+
 	public:
-		PicoAnalogCorrection(int gnd_val=0, int vcc_val=0);
-		
+		PicoAnalogCorrection(size_t adc_res=12, size_t gnd_val=0, size_t vcc_val=0);
+
 		void calibrateAdc(size_t gnd_pin, size_t vcc_pin, size_t avg_size=100);
 		void returnCalibrationValues();
-		
+
 		int analogRead(size_t pin);
 		int analogCRead(size_t pin, size_t avg_size=1);
 };

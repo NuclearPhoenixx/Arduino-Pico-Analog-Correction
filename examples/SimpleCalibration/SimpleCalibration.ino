@@ -9,21 +9,24 @@
  * Serial Monitor. Paste them into the
  * PicoAnalogCorrection constructor and you're done.
  *
- * MIT, 2021, Phoenix1747
+ * You can also define a custom ADC resolution.
+ *
+ * MIT, 2022, Phoenix1747
  */
 
 #include <PicoAnalogCorrection.h>
 
 const uint8_t GND_PIN = A1; // GND meas pin
 const uint8_t VCC_PIN = A0; // VCC meas pin
+const uint8_t ADC_RES = 12; // ADC bits
 
-PicoAnalogCorrection pico;
+PicoAnalogCorrection pico(ADC_RES);
 
 void setup() {
   pinMode(GND_PIN, INPUT);
   pinMode(VCC_PIN, INPUT);
 
-  analogReadResolution(12); // 12-bit ADC, 4096 channels
+  analogReadResolution(ADC_RES);
 
   // Calibrate ADC using an average of 5000 measurements
   pico.calibrateAdc(GND_PIN, VCC_PIN, 5000);
