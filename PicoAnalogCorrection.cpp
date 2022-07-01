@@ -53,7 +53,7 @@ void PicoAnalogCorrection::returnCalibrationValues() {
 
 int PicoAnalogCorrection::analogRead(size_t pin) {
 	digitalWrite(PS_PIN, HIGH); // Disable power-saving
-	delayMicroseconds(2); // Cooldown, maybe useless?
+	//delayMicroseconds(2); // Cooldown for the converter to stabilize?
 
 	int value = ::analogRead(pin); // Use normal Arduino analogRead func
 
