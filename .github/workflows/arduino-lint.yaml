@@ -1,0 +1,11 @@
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: arduino/arduino-lint-action@v1.0.2
+        with:
+          project-type: library
+          library-manager: update
+          compliance: specification #strict
