@@ -1,3 +1,4 @@
+# Execute Arduino Lint automatically upon push or pull request
 on: [push, pull_request]
 jobs:
   lint:
