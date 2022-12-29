@@ -3,6 +3,7 @@
 ![arduino-library-badge](https://www.ardu-badge.com/badge/PicoAnalogCorrection.svg?) ![latest version](https://img.shields.io/github/release/Phoenix1747/Arduino-Pico-Analog-Correction.svg?) ![issues](https://img.shields.io/github/issues/Phoenix1747/Arduino-Pico-Analog-Correction.svg?) ![open pr](https://img.shields.io/github/issues-pr-raw/phoenix1747/Arduino-Pico-Analog-Correction.svg?)
 
 Arduino library to calibrate and improve ADC measurements with the Raspberry Pi Pico. Can compensate ADC offsets, calculate the arithmetic mean of any number of measurements and temporarily disable the power-saving mode when analog-reading to improve the power supply ripple and noise.
+There is also a function for reading the temperature sensor depending on your ADC resolution and reference voltage.
 
 This library is also available in the Arduino IDE, see [Arduino Library List](https://www.arduinolibraries.info/libraries/pico-analog-correction).
 
@@ -24,6 +25,18 @@ int analogCRead(size_t pin, size_t avg_size=1);
 ```
 
 Both of these temporarily disable the power-saving mode to improve noise. Only the second function allows taking an arbitrary number of measurements and returning the arithmetic mean while also using the linear calibration.
+
+You can also read the correct temperature from the temp sensor, even if you're not using the default resolution and reference voltage. Be sure that you supply the constructor with the correct values, then simply call:
+
+```cpp
+float analogReadTempCorrect();
+```
+
+This defaults to Celsius, you can also print Fahrenheit:
+
+```cpp
+float analogReadTempCorrect(PAC_F);
+```
 
 ## Limitations
 

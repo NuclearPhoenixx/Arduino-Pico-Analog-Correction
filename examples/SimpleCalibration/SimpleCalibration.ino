@@ -10,6 +10,7 @@
  * PicoAnalogCorrection constructor and you're done.
  *
  * You can also define a custom ADC resolution.
+ * You can also read the correct temp from the sensor using the Vref value.
  *
  * MIT, 2022, Phoenix1747
  */
@@ -19,8 +20,9 @@
 const uint8_t GND_PIN = A1; // GND meas pin
 const uint8_t VCC_PIN = A0; // VCC meas pin
 const uint8_t ADC_RES = 12; // ADC bits
+const float VREF = 3.0; // Analog reference voltage
 
-PicoAnalogCorrection pico(ADC_RES);
+PicoAnalogCorrection pico(ADC_RES, VREF);
 
 void setup() {
   pinMode(GND_PIN, INPUT);
@@ -54,6 +56,12 @@ void loop() {
   Serial.println(pico.analogRead(VCC_PIN));
   Serial.print("Calibrated VCC: ");
   Serial.println(pico.analogCRead(VCC_PIN,10));
+  Serial.println();
+
+  Serial.print("Temperature (C): ");
+  Serial.println(pico.analogReadTemp());
+  Serial.print("Temperature (F): ");
+  Serial.println(pico.analogReadTemp(PAC_F));
   Serial.println();
 
   delay(1000);
