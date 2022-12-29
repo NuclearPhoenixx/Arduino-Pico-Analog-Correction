@@ -16,7 +16,7 @@ calibrateAdc	KEYWORD2
 returnCalibrationValues	KEYWORD2
 analogRead	KEYWORD2
 analogCRead	KEYWORD2
-analogReadTempCorrect	KEYWORD2
+analogReadTemp	KEYWORD2
 
 #####################################
 # Constants (LITERAL1)

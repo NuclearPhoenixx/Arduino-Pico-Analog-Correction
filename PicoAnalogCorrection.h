@@ -13,8 +13,8 @@
 #define PS_PIN 23 // Power Save Pin, H to disable, L default
 
 typedef enum {
-  PAC_C = 0, // Celsius
-  PAC_F = 1, // Fahrenheit
+  PAC_C, // Celsius
+  PAC_F, // Fahrenheit
 } pactemp_t;
 
 
