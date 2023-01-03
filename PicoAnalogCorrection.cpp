@@ -6,6 +6,16 @@
 #include "PicoAnalogCorrection.h"
 
 
+PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, float vref) {
+	_adc_res = adc_res;
+	_max_channel = pow(2, adc_res) - 1;
+	_gnd_offset = 0;
+	_vcc_offset = 0;
+	_vref = vref;
+	setCorrectionValues();
+}
+
+
 PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, size_t gnd_val, size_t vcc_val) {
 	_adc_res = adc_res;
 	_max_channel = pow(2, adc_res) - 1;
@@ -19,9 +29,9 @@ PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, size_t gnd_val, size_
 PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, float vref, size_t gnd_val, size_t vcc_val) {
 	_adc_res = adc_res;
 	_max_channel = pow(2, adc_res) - 1;
+	_vref = vref;
 	_gnd_offset = gnd_val;
 	_vcc_offset = vcc_val;
-	_vref = vref;
 	setCorrectionValues();
 }
 

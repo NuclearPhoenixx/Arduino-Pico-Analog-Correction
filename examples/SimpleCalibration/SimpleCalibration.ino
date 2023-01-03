@@ -17,10 +17,10 @@
 
 #include <PicoAnalogCorrection.h>
 
-const uint8_t GND_PIN = A1; // GND meas pin
-const uint8_t VCC_PIN = A0; // VCC meas pin
-const uint8_t ADC_RES = 12; // ADC bits
-const float VREF = 3.0; // Analog reference voltage
+const uint8_t GND_PIN = A1;  // GND meas pin
+const uint8_t VCC_PIN = A0;  // VCC meas pin
+const uint8_t ADC_RES = 12;  // ADC bits
+const float VREF = 3.0;      // Analog reference voltage
 
 PicoAnalogCorrection pico(ADC_RES, VREF);
 
@@ -35,8 +35,8 @@ void setup() {
 
   Serial.begin();
 
-  while(!Serial) {
-    ; // Wait for Serial
+  while (!Serial) {
+    ;  // Wait for Serial
   }
 }
 
@@ -50,12 +50,12 @@ void loop() {
   Serial.print("Uncalibrated GND: ");
   Serial.println(pico.analogRead(GND_PIN));
   Serial.print("Calibrated GND: ");
-  Serial.println(pico.analogCRead(GND_PIN,10));
+  Serial.println(pico.analogCRead(GND_PIN, 10));
 
   Serial.print("Uncalibrated VCC: ");
   Serial.println(pico.analogRead(VCC_PIN));
   Serial.print("Calibrated VCC: ");
-  Serial.println(pico.analogCRead(VCC_PIN,10));
+  Serial.println(pico.analogCRead(VCC_PIN, 10));
   Serial.println();
 
   Serial.print("Temperature (C): ");

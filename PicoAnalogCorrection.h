@@ -26,11 +26,14 @@ class PicoAnalogCorrection {
 		void setCorrectionValues();
 
 	public:
-		PicoAnalogCorrection(size_t adc_res=12, size_t gnd_val=0, size_t vcc_val=0);
-		PicoAnalogCorrection(size_t adc_res=12, float vref=3.3, size_t gnd_val=0, size_t vcc_val=0);
-
+		PicoAnalogCorrection(size_t adc_res=12, float vref=3.3);
+		PicoAnalogCorrection(size_t adc_res, size_t gnd_val, size_t vcc_val); // Backwards Compatability
+		PicoAnalogCorrection(size_t adc_res, float vref, size_t gnd_val, size_t vcc_val);
+		
 		void calibrateAdc(size_t gnd_pin, size_t vcc_pin, size_t avg_size=100);
 		void returnCalibrationValues();
+		
+		//void analogReadResolution(size_t adc_res);
 
 		int analogRead(size_t pin);
 		int analogCRead(size_t pin, size_t avg_size=1);
