@@ -75,6 +75,7 @@ void PicoAnalogCorrection::returnCalibrationValues() {
 
 void PicoAnalogCorrection::analogReadResolution(size_t adc_res) {
 	_adc_res = adc_res;
+	::analogReadResolution(adc_res);
 }
 
 
