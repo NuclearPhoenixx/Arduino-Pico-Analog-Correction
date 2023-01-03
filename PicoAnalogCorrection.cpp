@@ -73,6 +73,11 @@ void PicoAnalogCorrection::returnCalibrationValues() {
 }
 
 
+void PicoAnalogCorrection::analogReadResolution(size_t adc_res) {
+	_adc_res = adc_res;
+}
+
+
 int PicoAnalogCorrection::analogRead(size_t pin) {
 	digitalWrite(PS_PIN, HIGH); // Disable power-saving
 	//delayMicroseconds(2); // Cooldown for the converter to stabilize?

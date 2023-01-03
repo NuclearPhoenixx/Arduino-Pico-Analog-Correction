@@ -29,6 +29,7 @@ void setup() {
   pinMode(VCC_PIN, INPUT);
 
   analogReadResolution(ADC_RES);
+  //pico.analogReadResolution(ADC_RES); // Needs to be called only if ADC_RES changes after the initial declaration of pico
 
   // Calibrate ADC using an average of 5000 measurements
   pico.calibrateAdc(GND_PIN, VCC_PIN, 5000);

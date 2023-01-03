@@ -17,6 +17,7 @@ returnCalibrationValues	KEYWORD2
 analogRead	KEYWORD2
 analogCRead	KEYWORD2
 analogReadTemp	KEYWORD2
+analogReadResolution	KEYWORD2
 
 #####################################
 # Constants (LITERAL1)

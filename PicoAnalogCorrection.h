@@ -33,7 +33,7 @@ class PicoAnalogCorrection {
 		void calibrateAdc(size_t gnd_pin, size_t vcc_pin, size_t avg_size=100);
 		void returnCalibrationValues();
 		
-		//void analogReadResolution(size_t adc_res);
+		void analogReadResolution(size_t adc_res);
 
 		int analogRead(size_t pin);
 		int analogCRead(size_t pin, size_t avg_size=1);
