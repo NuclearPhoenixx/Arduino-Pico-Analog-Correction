@@ -1,6 +1,6 @@
 /*
  * Analog Correction For Raspberry Pi Pico
- * https://github.com/Phoenix1747/Arduino-Pico-Analog-Correction
+ * https://github.com/NuclearPhoenixx/Arduino-Pico-Analog-Correction
  *
  * Connect A1 to GND and A0 to VCC (3.3V), then
  * upload this sketch and restart the Pico.
@@ -12,7 +12,7 @@
  * You can also define a custom ADC resolution.
  * You can also read the correct temp from the sensor using the Vref value.
  *
- * MIT, 2022, Phoenix1747
+ * MIT, 2022, NuclearPhoenix
  */
 
 #include <PicoAnalogCorrection.h>

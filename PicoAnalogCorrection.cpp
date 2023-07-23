@@ -1,6 +1,6 @@
 /*
 	Arduino Pico Analog Correction
-	https://github.com/Phoenix1747/Arduino-Pico-Analog-Correction/
+	https://github.com/NuclearPhoenixx/Arduino-Pico-Analog-Correction/
 */
 
 #include "PicoAnalogCorrection.h"
