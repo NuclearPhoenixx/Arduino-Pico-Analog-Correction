@@ -7,6 +7,7 @@
 
 
 PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, float vref) {
+	_adc_init = false;
 	_adc_res = adc_res;
 	_max_channel = pow(2, adc_res) - 1;
 	_gnd_offset = 0;
@@ -17,6 +18,7 @@ PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, float vref) {
 
 
 PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, size_t gnd_val, size_t vcc_val) {
+	_adc_init = false;
 	_adc_res = adc_res;
 	_max_channel = pow(2, adc_res) - 1;
 	_gnd_offset = gnd_val;
@@ -27,6 +29,7 @@ PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, size_t gnd_val, size_
 
 
 PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, float vref, size_t gnd_val, size_t vcc_val) {
+	_adc_init = false;
 	_adc_res = adc_res;
 	_max_channel = pow(2, adc_res) - 1;
 	_vref = vref;
@@ -104,7 +107,10 @@ int PicoAnalogCorrection::analogCRead(size_t pin, size_t avg_size) {
 
 
 float PicoAnalogCorrection::analogReadTemp(pactemp_t type) {
-	adc_init();
+	if (!_adc_init) {
+		adc_init();
+		_adc_init = true;
+	}
 	adc_set_temp_sensor_enabled(true);
 	delay(1); // Allow things to settle.  Without this, readings can be erratic
 	adc_select_input(4); // Temperature sensor is analog pin 4
