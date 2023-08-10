@@ -104,7 +104,13 @@ int PicoAnalogCorrection::analogCRead(size_t pin, size_t avg_size) {
 
 
 float PicoAnalogCorrection::analogReadTemp(pactemp_t type) {
-    float t = ::analogReadTemp(_vref);
+	adc_init();
+	adc_set_temp_sensor_enabled(true);
+	delay(1); // Allow things to settle.  Without this, readings can be erratic
+	adc_select_input(4); // Temperature sensor is analog pin 4
+	int v = adc_read();
+	adc_set_temp_sensor_enabled(false);
+	float t = 27.0f - ((v * _vref / pow(2, _adc_res)) - 0.706f) / 0.001721f; // From the datasheet with custom values for ADC res and Vref voltage
 	
 	if (type == PAC_F) {
 		return t * 1.8f + 32.0f;
