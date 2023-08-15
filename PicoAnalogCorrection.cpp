@@ -7,7 +7,9 @@
 
 
 PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, float vref) {
-	_adc_init = false;
+	#ifndef ARDUINO_ARCH_MBED_RP2040
+		_adc_init = false;
+	#endif
 	_adc_res = adc_res;
 	_max_channel = pow(2, adc_res) - 1;
 	_gnd_offset = 0;
@@ -18,7 +20,9 @@ PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, float vref) {
 
 
 PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, size_t gnd_val, size_t vcc_val) {
-	_adc_init = false;
+	#ifndef ARDUINO_ARCH_MBED_RP2040
+		_adc_init = false;
+	#endif
 	_adc_res = adc_res;
 	_max_channel = pow(2, adc_res) - 1;
 	_gnd_offset = gnd_val;
@@ -29,7 +33,9 @@ PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, size_t gnd_val, size_
 
 
 PicoAnalogCorrection::PicoAnalogCorrection(size_t adc_res, float vref, size_t gnd_val, size_t vcc_val) {
-	_adc_init = false;
+	#ifndef ARDUINO_ARCH_MBED_RP2040
+		_adc_init = false;
+	#endif
 	_adc_res = adc_res;
 	_max_channel = pow(2, adc_res) - 1;
 	_vref = vref;
@@ -107,17 +113,21 @@ int PicoAnalogCorrection::analogCRead(size_t pin, size_t avg_size) {
 
 
 float PicoAnalogCorrection::analogReadTemp(pactemp_t type) {
-	if (!_adc_init) {
-		adc_init();
-		_adc_init = true;
-	}
-	adc_set_temp_sensor_enabled(true);
-	delay(1); // Allow things to settle.  Without this, readings can be erratic
-	adc_select_input(4); // Temperature sensor is analog pin 4
-	int v = adc_read();
-	adc_set_temp_sensor_enabled(false);
-	float t = 27.0f - ((v * _vref / pow(2, _adc_res)) - 0.706f) / 0.001721f; // From the datasheet with custom values for ADC res and Vref voltage
-	
+	#ifndef ARDUINO_ARCH_MBED_RP2040
+		if (!_adc_init) {
+			adc_init();
+			_adc_init = true;
+		}
+		adc_set_temp_sensor_enabled(true);
+		delay(1); // Allow things to settle.  Without this, readings can be erratic
+		adc_select_input(4); // Temperature sensor is analog pin 4
+		int v = adc_read();
+		adc_set_temp_sensor_enabled(false);
+		float t = 27.0f - ((v * _vref / pow(2, _adc_res)) - 0.706f) / 0.001721f; // From the datasheet with custom values for ADC res and Vref voltage
+	#else
+		float t = ::analogReadTemp(_vref);
+	#endif
+		
 	if (type == PAC_F) {
 		return t * 1.8f + 32.0f;
 	} else {

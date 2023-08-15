@@ -22,7 +22,9 @@ class PicoAnalogCorrection {
 	private:
 		size_t _max_channel, _gnd_offset, _vcc_offset, _adc_res;
 		float _a, _d, _vref;
-		bool _adc_init;
+		#ifndef ARDUINO_ARCH_MBED_RP2040
+	    	bool _adc_init;
+	    #endif
 
 		void setCorrectionValues();
 
