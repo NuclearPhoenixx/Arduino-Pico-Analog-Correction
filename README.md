@@ -7,6 +7,8 @@ There is also a function for reading the temperature sensor depending on your AD
 
 This library is also available in the Arduino IDE, see [Arduino Library List](https://www.arduinolibraries.info/libraries/pico-analog-correction).
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J61GLR3G)
+
 ## Using
 
 You can use the [example calibration sketch](examples/SimpleCalibration) to grab the calibration values, just follow the instructions given in the sketch.
